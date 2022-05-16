@@ -2,9 +2,11 @@
   <div class="validate-input-container pb-3">
     <input type="text"
       class="form-control"
+      :class="{'is-invalid': inputRef.error}"
       v-model="inputRef.val"
       @blur="validateInput"
     >
+    <span v-if="inputRef.error" class="invalid-feedback">{{inputRef.message}}</span>
   </div>
 </template>
 
@@ -31,14 +33,14 @@ export default defineComponent({
       message: ''
     })
 
-    const validateInput = () => { // 每個 rules 都必須通過 只要有一個沒有就視為 false 因此使用 every // every 會返回一個 boolean 值
-      if (props.rules) {
+    const validateInput = () => { // 每個 rules 都必須通過 只要有一個沒有就視為 false 因此使用 every
+      if (props.rules) { // every 會返回一個 boolean 值
         const allPassed = props.rules.every(rule => {
           let passed = true
           inputRef.message = rule.message
           switch (rule.type) {
             case 'required':
-              passed = (inputRef.val.trim() === '')
+              passed = (inputRef.val.trim() !== '')
               break
             case 'email':
               passed = emailReg.test(inputRef.val)
