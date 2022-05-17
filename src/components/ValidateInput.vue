@@ -3,8 +3,9 @@
     <input type="text"
       class="form-control"
       :class="{'is-invalid': inputRef.error}"
-      v-model="inputRef.val"
+      :value="inputRef.val"
       @blur="validateInput"
+      @input="updateValue"
     >
     <span v-if="inputRef.error" class="invalid-feedback">{{inputRef.message}}</span>
   </div>
@@ -24,14 +25,21 @@ export type RulesProp = RuleProp[]
 
 export default defineComponent({
   props: {
-    rules: Array as PropType<RulesProp>
+    rules: Array as PropType<RulesProp>,
+    modelValue: String
   },
-  setup (props) {
+  setup (props, context) {
     const inputRef = reactive({
-      val: '',
+      val: props.modelValue || '',
       error: false,
       message: ''
     })
+
+    const updateValue = (e: KeyboardEvent) => {
+      const targetValue = (e.target as HTMLInputElement).value
+      inputRef.val = targetValue
+      context.emit('update:modelValue', targetValue)
+    }
 
     const validateInput = () => { // 每個 rules 都必須通過 只要有一個沒有就視為 false 因此使用 every
       if (props.rules) { // every 會返回一個 boolean 值
@@ -53,7 +61,7 @@ export default defineComponent({
         inputRef.error = !allPassed
       }
     }
-    return { inputRef, validateInput }
+    return { inputRef, validateInput, updateValue }
   }
 })
 </script>

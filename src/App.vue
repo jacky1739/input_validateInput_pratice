@@ -6,7 +6,8 @@
     <form>
       <div class="mb-3">
         <label class="form-label">電子信箱</label>
-        <validate-input :rules="emailRules"></validate-input>
+        <validate-input :rules="emailRules" v-model="emailVal"></validate-input>
+        {{ emailVal }}
       </div>
 
       <div class="mb-3">
@@ -28,7 +29,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from 'vue'
+import { defineComponent, reactive, ref } from 'vue'
 import GloablHeader, { UserProps } from './components/GlobalHeader.vue'
 import ValidateInput, { RulesProp } from './components/ValidateInput.vue'
 
@@ -45,6 +46,7 @@ export default defineComponent({
     GloablHeader, ValidateInput
   },
   setup () {
+    const emailVal = ref('Jacky')
     const emailRules: RulesProp = [
       { type: 'required', message: '帳號不能為空' },
       { type: 'email', message: '請輸入正確的電子信箱格式' }
@@ -65,7 +67,7 @@ export default defineComponent({
       }
     }
     return {
-      currentUser, validateEmail, emailRef, emailRules
+      currentUser, validateEmail, emailRef, emailRules, emailVal
     }
   }
 })
