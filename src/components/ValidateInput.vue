@@ -6,10 +6,6 @@
       :value="inputRef.val"
       @blur="validateInput"
       @input="updateValue"
-<<<<<<< HEAD
-=======
-      v-bind="$attrs"
->>>>>>> 7e28dcdc94a6a4d369932495abd4cfb4cb87d491
     >
     <span v-if="inputRef.error" class="invalid-feedback">{{inputRef.message}}</span>
   </div>
@@ -32,13 +28,7 @@ export default defineComponent({
     rules: Array as PropType<RulesProp>,
     modelValue: String
   },
-<<<<<<< HEAD
   setup (props, context) {
-=======
-  inheritAttrs: false,
-  setup (props, context) {
-    console.log(context.attrs)
->>>>>>> 7e28dcdc94a6a4d369932495abd4cfb4cb87d491
     const inputRef = reactive({
       val: props.modelValue || '',
       error: false,
@@ -71,15 +61,6 @@ export default defineComponent({
         inputRef.error = !allPassed
       }
     }
-<<<<<<< HEAD
-
-    const updateValue = (e: Event) => {
-      const targetValue = (e.target as HTMLInputElement).value
-      inputRef.val = targetValue
-      context.emit('update:modelValue', targetValue)
-    }
-=======
->>>>>>> 7e28dcdc94a6a4d369932495abd4cfb4cb87d491
     return { inputRef, validateInput, updateValue }
   }
 })
