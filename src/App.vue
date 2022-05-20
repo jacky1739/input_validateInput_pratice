@@ -9,6 +9,11 @@
         <validate-input :rules="emailRules" v-model="emailValue"></validate-input>
         {{ emailValue }}
       </div>
+      <div class="mb-3">
+        <label class="form-label">密碼</label>
+        <validate-input :rules="passwordRules" v-model="passwordValue"></validate-input>
+        {{ passwordValue }}
+      </div>
 
       <!-- <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Email address</label>
@@ -50,10 +55,15 @@ export default defineComponent({
     GloablHeader, ValidateInput, ValidateForm
   },
   setup () {
-    const emailValue = ref('jacky')
+    const emailValue = ref('')
     const emailRules: RulesProp = [
       { type: 'required', message: '帳號不能為空' },
       { type: 'email', message: '請輸入正確的電子信箱格式' }
+    ]
+
+    const passwordValue = ref('')
+    const passwordRules: RulesProp = [
+      { type: 'required', message: '密碼不能為空' }
     ]
 
     const emailRef = reactive({
@@ -74,7 +84,7 @@ export default defineComponent({
       console.log('123123', result)
     }
     return {
-      currentUser, validateEmail, emailRef, emailRules, emailValue, onFormSubmit
+      currentUser, validateEmail, emailRef, emailRules, passwordRules, emailValue, passwordValue, onFormSubmit
     }
   }
 })
