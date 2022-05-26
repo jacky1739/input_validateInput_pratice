@@ -6,12 +6,12 @@
     <validate-form @form-submit="onFormSubmit">
       <div class="mb-3">
         <label class="form-label">電子信箱</label>
-        <validate-input :rules="emailRules" v-model="emailValue"></validate-input>
+        <validate-input type="text" placeholder="請輸入email" :rules="emailRules" v-model="emailValue" ref="inputRef"></validate-input>
         {{ emailValue }}
       </div>
       <div class="mb-3">
         <label class="form-label">密碼</label>
-        <validate-input :rules="passwordRules" v-model="passwordValue"></validate-input>
+        <validate-input type="password" placeholder="請輸入密碼" :rules="passwordRules" v-model="passwordValue"></validate-input>
         {{ passwordValue }}
       </div>
 
@@ -55,6 +55,7 @@ export default defineComponent({
     GloablHeader, ValidateInput, ValidateForm
   },
   setup () {
+    const inputRef = ref()
     const emailValue = ref('')
     const emailRules: RulesProp = [
       { type: 'required', message: '帳號不能為空' },
@@ -80,11 +81,12 @@ export default defineComponent({
         emailRef.message = 'should be valid email'
       }
     }
-    const onFormSubmit = (result: boolean) => {
-      console.log('123123', result)
+    const onFormSubmit = () => {
+      console.log('result', inputRef.value.validateInput())
+      // console.log('123123', result)
     }
     return {
-      currentUser, validateEmail, emailRef, emailRules, passwordRules, emailValue, passwordValue, onFormSubmit
+      currentUser, validateEmail, emailRef, emailRules, passwordRules, emailValue, passwordValue, onFormSubmit, inputRef
     }
   }
 })
