@@ -56,13 +56,13 @@ export default defineComponent({
   },
   setup () {
     const inputRef = ref()
-    const emailValue = ref('123@test.com')
+    const emailValue = ref('')
     const emailRules: RulesProp = [
       { type: 'required', message: '帳號不能為空' },
       { type: 'email', message: '請輸入正確的電子信箱格式' }
     ]
 
-    const passwordValue = ref('123')
+    const passwordValue = ref('')
     const passwordRules: RulesProp = [
       { type: 'required', message: '密碼不能為空' }
     ]
@@ -81,8 +81,8 @@ export default defineComponent({
         emailRef.message = 'should be valid email'
       }
     }
-    const onFormSubmit = () => {
-      console.log('result', inputRef.value)
+    const onFormSubmit = (result: boolean) => {
+      console.log('result', result)
       // console.log('123123', result)
     }
     return {
