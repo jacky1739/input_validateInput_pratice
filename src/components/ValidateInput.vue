@@ -55,7 +55,7 @@ export default defineComponent({
               passed = (inputRef.val.trim() !== '')
               break
             case 'email':
-              passed = emailReg.test(inputRef.val)
+              passed = emailReg.test(inputRef.val) // 是否符合 .test()
               break
             default:
               break
