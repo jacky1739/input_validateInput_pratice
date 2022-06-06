@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-primary justify-content-between">
+  <nav class="navbar navbar-expand-lg navbar-light bg-primary justify-content-between mb-4 px-4">
     <a href="#" class="navbar-brand">者也專欄</a>
     <ul class="list-inline mb-0 d-flex" v-if="!user.isLogin">
       <li class="list-inline-item">

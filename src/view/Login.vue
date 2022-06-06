@@ -1,7 +1,4 @@
 <template>
-  <!-- <div class="container bg-primary">
-    <gloabl-header :user="currentUser"></gloabl-header>
-  </div> -->
   <div class="container">
     <validate-form @form-submit="onFormSubmit">
       <div class="mb-3">
@@ -38,21 +35,15 @@
 
 <script lang="ts">
 import { defineComponent, reactive, ref } from 'vue'
-import GloablHeader, { UserProps } from '../components/GlobalHeader.vue'
 import ValidateInput, { RulesProp } from '../components/ValidateInput.vue'
 import ValidateForm from '../components/ValidateForm.vue'
-
-const currentUser: UserProps = {
-  isLogin: true,
-  name: 'jacky'
-}
 
 const emailReg = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 
 export default defineComponent({
   name: 'App',
   components: {
-    GloablHeader, ValidateInput, ValidateForm
+    ValidateInput, ValidateForm
   },
   setup () {
     const inputRef = ref()
@@ -86,7 +77,7 @@ export default defineComponent({
       // console.log('123123', result)
     }
     return {
-      currentUser, validateEmail, emailRef, emailRules, passwordRules, emailValue, passwordValue, onFormSubmit, inputRef
+      validateEmail, emailRef, emailRules, passwordRules, emailValue, passwordValue, onFormSubmit, inputRef
     }
   }
 })
