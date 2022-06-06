@@ -1,12 +1,12 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-primary justify-content-between mb-4 px-4">
-    <a href="#" class="navbar-brand">者也專欄</a>
+    <router-link to="/" class="navbar-brand">者也專欄</router-link>
     <ul class="list-inline mb-0 d-flex" v-if="!user.isLogin">
       <li class="list-inline-item">
-        <a class="btn btn-outline-light my-2" href="#">登入</a>
+        <router-link class="btn btn-outline-light my-2" to="/login">登入</router-link>
       </li>
       <li class="list-inline-item">
-        <a class="btn btn-outline-light my-2" href="#">註冊</a>
+        <router-link class="btn btn-outline-light my-2" to="/login">註冊</router-link>
       </li>
     </ul>
     <ul v-else class="list-inline mb-2">

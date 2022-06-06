@@ -27,7 +27,7 @@ import GloablHeader, { UserProps } from './components/GlobalHeader.vue'
 // import Login from './view/Login.vue'
 
 const currentUser: UserProps = {
-  isLogin: true,
+  isLogin: false,
   name: 'jacky'
 }
 
