@@ -35,6 +35,7 @@
 
 <script lang="ts">
 import { defineComponent, reactive, ref } from 'vue'
+import { useRouter } from 'vue-router'
 import ValidateInput, { RulesProp } from '../components/ValidateInput.vue'
 import ValidateForm from '../components/ValidateForm.vue'
 
@@ -46,6 +47,7 @@ export default defineComponent({
     ValidateInput, ValidateForm
   },
   setup () {
+    const router = useRouter()
     const inputRef = ref()
     const emailValue = ref('')
     const emailRules: RulesProp = [
@@ -74,6 +76,9 @@ export default defineComponent({
     }
     const onFormSubmit = (result: boolean) => {
       console.log('result', result)
+      if (result) {
+        router.push({ name: 'column', params: { id: 1 } })
+      }
       // console.log('123123', result)
     }
     return {
