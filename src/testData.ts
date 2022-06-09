@@ -41,7 +41,7 @@ export const testData: ColumnProps[] = [
   }
 ]
 
-export const testProps: PostProps[] = [
+export const testPosts: PostProps[] = [
   {
     id: 1,
     title: '这是我的第一篇文章',
