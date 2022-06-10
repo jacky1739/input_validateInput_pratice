@@ -20,7 +20,7 @@ const router = createRouter({
       component: Login
     },
     {
-      path: '/column/:id',
+      path: '/column/:id', // 動態路由前面加上冒號
       name: 'column',
       component: column
     }
