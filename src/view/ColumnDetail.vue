@@ -9,7 +9,7 @@
         <p class="text-muted">{{column.description}}</p>
       </div>
     </div>
-    <post-list :list="list"></post-list>
+    <!-- <post-list :list="list"></post-list> -->
   </div>
 </template>
 
@@ -17,7 +17,11 @@
 import { defineComponent } from 'vue'
 import { useRoute } from 'vue-router'
 import { testData, testPosts } from '../testData'
+// import PostList from '../components/PostList.vue'
 export default defineComponent({
+  components: {
+    // PostList
+  },
   setup () {
     const route = useRoute()
     const currentId = +route.params.id // 利用+號把id從number轉為string
