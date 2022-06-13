@@ -6,7 +6,7 @@ import Login from './view/Login.vue'
 import column from './view/ColumnDetail.vue'
 import App from './App.vue'
 
-const store = createStore({
+const store = createStore({ // 需要一個支援響應式編程的store
   state: {
     count: 0
   },
@@ -17,7 +17,7 @@ const store = createStore({
   }
 })
 console.log('store', store.state.count)
-store.commit('add')
+store.commit('add') // 修改對象需要 commit 方法
 console.log('store', store.state.count)
 
 const routerHistory = createWebHashHistory()
