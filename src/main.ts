@@ -1,9 +1,24 @@
 import { createApp } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
+import { createStore } from 'vuex'
 import Home from './view/Home.vue'
 import Login from './view/Login.vue'
 import column from './view/ColumnDetail.vue'
 import App from './App.vue'
+
+const store = createStore({
+  state: {
+    count: 0
+  },
+  mutations: { // 非常的類似於事件
+    add (state) {
+      state.count++
+    }
+  }
+})
+console.log('store', store.state.count)
+store.commit('add')
+console.log('store', store.state.count)
 
 const routerHistory = createWebHashHistory()
 const router = createRouter({
