@@ -21,15 +21,17 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import GloablHeader, { UserProps } from './components/GlobalHeader.vue'
+import { defineComponent, computed } from 'vue'
+import { useStore } from 'vuex'
+// import GloablHeader, { UserProps } from './components/GlobalHeader.vue'
+import GloablHeader from './components/GlobalHeader.vue'
 // import Home from './view/Home.vue'
 // import Login from './view/Login.vue'
 
-const currentUser: UserProps = {
-  isLogin: false,
-  name: 'jacky'
-}
+// const currentUser: UserProps = {
+//   isLogin: false,
+//   name: 'jacky'
+// }
 
 export default defineComponent({
   name: 'App',
@@ -37,6 +39,8 @@ export default defineComponent({
     GloablHeader
   },
   setup () {
+    const store = useStore()
+    const currentUser = computed(() => store.state.user)
     return {
       currentUser
     }
