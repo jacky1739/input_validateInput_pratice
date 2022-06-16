@@ -23,6 +23,11 @@ const store = createStore<GlobalDataProps>({
     login (state) {
       state.user = { ...state.user, isLogin: true, name: 'jacky' }
     }
+  },
+  getters: {
+    biggerColumnsLen (state) {
+      return state.columns.filter(item => item.id > 2).length
+    }
   }
 })
 
