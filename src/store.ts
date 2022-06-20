@@ -25,7 +25,10 @@ const store = createStore<GlobalDataProps>({
     }
   },
   getters: {
-    biggerColumnsLen (state) {
+    // biggerColumnsLen (state) {
+    //   return state.columns.filter(item => item.id > 2).length
+    // }, // 沒有傳參數的兩種寫法都可以
+    biggerColumnsLen: (state) => {
       return state.columns.filter(item => item.id > 2).length
     },
     getColumnById: (state) => (id: number) => {
