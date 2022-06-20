@@ -14,19 +14,23 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { computed, defineComponent } from 'vue'
 import { useRoute } from 'vue-router'
-import { testData, testPosts } from '../testData'
+import { useStore } from 'vuex'
+// import { testData, testPosts } from '../testData'
 import PostList from '../components/PostList.vue'
 export default defineComponent({
   components: {
     PostList
   },
   setup () {
+    const store = useStore()
     const route = useRoute()
     const currentId = +route.params.id // 利用+號把id從number轉為string
-    const column = testData.find(item => item.id === currentId)
-    const list = testPosts.filter(post => post.columnId === currentId)
+    // const column = testData.find(item => item.id === currentId)
+    const column = computed(() => store.getters.getColumnById(currentId))
+    // const list = testPosts.filter(post => post.columnId === currentId)
+    const list = computed(() => store.getters.getPostsByCid(currentId))
     return {
       route, column, list
     }

@@ -32,7 +32,7 @@ export default defineComponent({
   setup () {
     const store = useStore<GlobalDataProps>()
     const list = computed(() => store.state.columns)
-    const biggerColumnLen = computed(() => store.state.columns.filter(item => item.id > 2).length)
+    const biggerColumnLen = computed(() => store.getters.biggerColumnsLen)
     return {
       list, biggerColumnLen
     }
